@@ -12,4 +12,4 @@ async function transport(scheme, ip, port, ext, msg) {
     return res.data;
 }
 
-module.exports = { clientTransport: transport };
+module.exports = { transport };
