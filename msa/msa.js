@@ -18,34 +18,33 @@ async function msa() {
   // [[refG,refB,refD],[refG,refB,refD], ...]
   // where:
   // -- N is number of stations
-  // -- refG is ref. gravity field value in Std G.
-  // -- refB is ref. magnetic field intensity value in Gauss
-  // -- refD is ref. dip value in radians
+  // -- refG is ref. gravity field value (Std G.)
+  // -- refB is ref. magnetic field intensity value (Gauss)
+  // -- refD is ref. dip value (radians)
   const mRef = JSON.parse(
     "[[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974]]",
   );
 
-  // Accelerometer set of terms is a 6x1 array
-  // in the form of [ScaleX,BiasX,ScaleY,BiasY,ScaleZ,BiasZ].
-  // Reserved for future use. We have not yet decided whether
-  // we want to adjust accelerometer data. Given the uncertainty
-  // of reference values, accelerometer data remains the only
-  // reliable source of truth we can exploit, hence the hesitation.
+  // Accelerometer set of terms. Reserved for future use.
+  // We have not yet decided whether we want to adjust
+  // accelerometer data. Given the uncertainty of reference
+  // values, accelerometer data remains the only reliable
+  // source of truth we can exploit, hence the hesitation.
   const accTerms = null;
 
   // Magnetometer set of terms is a 6x1 array
   // in the form of [ScaleX,BiasX,ScaleY,BiasY,ScaleZ,BiasZ].
   // These values should be taken from the error model.
-  // Pls note - the last array element is a combination of
+  // Note: the last array element is a combination of
   // Bz sensor bias and drill-string interference. These two
   // independent error sources act along the same axis.
   const magTerms = [
     0.0008, // MSX,
-    35 * 1e-5, // MBX,
+    35 * 1e-5, // MBX (Gauss)
     0.0008, // MSY
-    35 * 1e-5, // MBY
+    35 * 1e-5, // MBY (Gauss)
     0.0008, // MSZ
-    Math.sqrt(35 * 35 + 100 * 100) * 1e-5, // SQRT(MBZ^2+AMIBZ^2)
+    Math.sqrt(35 * 35 + 100 * 100) * 1e-5, // SQRT(MBZ^2+AMIBZ^2) (Gauss)
   ];
 
   // Number of standard deviations to evaluate solution fitness.
