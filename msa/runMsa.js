@@ -1,5 +1,5 @@
-const { encrypt, decrypt } = require("../../shared/cypher");
-const { transport } = require("../../shared/transport");
+const { encrypt, decrypt } = require("../shared/cypher");
+const { transport } = require("../shared/transport");
 const { throwWhenInvalidInput } = require("./chkInput");
 
 async function runMsaAsync() {
