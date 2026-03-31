@@ -30,6 +30,8 @@ async function msa() {
   // accelerometer data. Given the uncertainty of reference
   // values, accelerometer data remains the only reliable
   // source of truth we can exploit, hence the hesitation.
+  // As to accelerometer quality assessment, user can apply
+  // standard indirect methods.
   const accTerms = null;
 
   // Magnetometer set of terms is a 6x1 array
