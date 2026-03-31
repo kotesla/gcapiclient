@@ -25,7 +25,7 @@ async function msa() {
     "[[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974],[1.0014,0.59238,1.423839603776974]]",
   );
 
-  // Accelerometer set of terms. Reserved for future use.
+  // A set of accelerometer terms. Reserved for future use.
   // We have not yet decided whether we want to adjust
   // accelerometer data. Given the uncertainty of reference
   // values, accelerometer data remains the only reliable
@@ -34,7 +34,7 @@ async function msa() {
   // standard indirect methods.
   const accTerms = null;
 
-  // Magnetometer set of terms is a 6x1 array
+  // A set of magnetometer terms. It is a 6x1 array
   // in the form of [ScaleX,BiasX,ScaleY,BiasY,ScaleZ,BiasZ].
   // These values should be taken from the error model.
   // Note: the last array element is a combination of
@@ -57,8 +57,8 @@ async function msa() {
   // Maximum percent of outlier stations allowed in the set.
   // User can choose any value between 0 and 15. Should user provide
   // any value > 15%, the system will automatically reset it to 15%.
-  // Having to remove more than 15% of the dataset indicates inconsistent
-  // data and should be dealt with separately.
+  // Having more than 15% outliers in the dataset indicates inconsistency
+  // and should be dealt with separately.
   const pcOutliersUser = 15;
 
   // Private key to encode data in transit. Although secure HTTPS
