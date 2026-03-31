@@ -1,5 +1,6 @@
 const { encrypt, decrypt } = require("../../shared/cypher");
 const { transport } = require("../../shared/transport");
+const { throwWhenInvalidInput } = require("./chkInput");
 
 async function runMsaAsync() {
   // Tool axes measurements is a Nx6 matrix in the form of
@@ -49,7 +50,7 @@ async function runMsaAsync() {
   // Number of standard deviations to evaluate solution fitness.
   // Typically, this is the same number as the one used in collision
   // avoidance rules.
-  const numSko = 2;
+  const stdDev = 2;
 
   // Maximum percent of outlier stations allowed in the set.
   // User can choose any value between 0 and 15. Should user provide
@@ -58,29 +59,39 @@ async function runMsaAsync() {
   // data and should be dealt with separately.
   const pcOutliersUser = 15;
 
-  // Token private key to encode data in transit. Although secure HTTPS
+  // Private key to encode data in transit. Although secure HTTPS
   // transport is used by default, some users prefer an extra security
   // layer they can control.
-  const secretWord = "ABCDEFG"; // token private key here
+  const privateKey = "ABCDEFG"; // private key here
 
-  // Create a set of data
+  throwWhenInvalidInput(
+    mAxes,
+    mRef,
+    accTerms,
+    magTerms,
+    stdDev,
+    pcOutliersUser,
+  );
+
+  // Create payload
   let payload = {
     mAxes: mAxes,
     mRef: mRef,
     accTerms: accTerms,
     magTerms: magTerms,
-    numSko: numSko,
+    stdDev: stdDev,
     pcOutliersUser: pcOutliersUser,
   };
 
-  // Serialize and encrypt payload
-  payload = encrypt(JSON.stringify(payload), secretWord);
-
-  // Place an async request to API server and request solution
-  const msg = await transport("https", "192.168.2.100", "3000", "msa", {
+  // Serialize payload
+  payload = JSON.stringify(payload);
+  // Encrypt payload
+  payload = encrypt(payload, privateKey);
+  // Place an async request to API server
+  const reply = await transport("https", "192.168.2.100", "3000", "msa", {
     payload: payload,
   });
-  payload = decrypt(msg.payload, "ABCDEFG");
+  payload = decrypt(reply.payload, privateKey);
   payload = JSON.parse(payload);
   return payload;
 }
