@@ -5,7 +5,7 @@ const { printObj } = require("../shared/utils");
 
 async function msa() {
   // Tool axes measurements is a Nx6 matrix in the form of
-  // [[gx,gy,gz,bx,by,bz],[gx,gy,gz,bx,by,bz]]
+  // [[gx,gy,gz,bx,by,bz],[gx,gy,gz,bx,by,bz], ...]
   // where:
   // -- N is number of survey stations
   // -- gx, gy, gz are accelerometer readings in Std G.
@@ -15,7 +15,7 @@ async function msa() {
   );
 
   // Field reference values is a Nx3 matrix in the form of
-  // [[refG,refB,refD],[refG,refB,refD]]
+  // [[refG,refB,refD],[refG,refB,refD], ...]
   // where:
   // -- N is number of stations
   // -- refG is ref. gravity field value in Std G.
