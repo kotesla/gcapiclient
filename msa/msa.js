@@ -57,8 +57,8 @@ async function msa() {
   // Maximum percent of outlier stations allowed in the set.
   // User can choose any value between 0 and 15. Should user provide
   // any value > 15%, the system will automatically reset it to 15%.
-  // Having more than 15% outliers in the dataset indicates inconsistency
-  // and should be dealt with separately.
+  // Having more than 15% outliers in the dataset indicates
+  // inconsistent data and should be dealt with separately.
   const pcOutliersUser = 15;
 
   // Private key to encode data in transit. Although secure HTTPS
