@@ -88,11 +88,13 @@ async function msa() {
   payload = JSON.stringify(payload);
   // Encrypt payload
   payload = encrypt(payload, privateKey);
-  // Async request to API server
+  // Send payload to API server and receive reply
   const reply = await transport("https", "api.geocertainty.com", "80", "msa", {
     payload: payload,
   });
+  // Decrypt reply
   payload = decrypt(reply.payload, privateKey);
+  // De-serialize reply
   payload = JSON.parse(payload);
   return payload;
 }
