@@ -1,8 +1,9 @@
 const { encrypt, decrypt } = require("../shared/cypher");
 const { transport } = require("../shared/transport");
-const { throwWhenInvalidInput } = require("./chkInput");
+const { throwWhenInvalidInput } = require("./input");
+const { printObj } = require("../shared/utils");
 
-async function runMsaAsync() {
+async function msa() {
   // Tool axes measurements is a Nx6 matrix in the form of
   // [[gx,gy,gz,bx,by,bz],[gx,gy,gz,bx,by,bz]]
   // where:
@@ -87,11 +88,19 @@ async function runMsaAsync() {
   payload = JSON.stringify(payload);
   // Encrypt payload
   payload = encrypt(payload, privateKey);
-  // Place an async request to API server
-  const reply = await transport("https", "192.168.2.100", "3000", "msa", {
+  // Async request to API server
+  const reply = await transport("https", "api.geocertainty.com", "80", "msa", {
     payload: payload,
   });
   payload = decrypt(reply.payload, privateKey);
   payload = JSON.parse(payload);
   return payload;
 }
+
+msa()
+  .then((s) => {
+    printObj(s);
+  })
+  .catch((e) => {
+    console.log(e);
+  });
