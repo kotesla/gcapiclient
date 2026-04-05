@@ -1,5 +1,7 @@
-const Message = require("../types/Message");
 const { printObj, throwArity } = require("../shared/utils");
+const {
+  getErrorModelListShort,
+} = require("../functions/getErrorModelListShortAsync");
 
 // *********************************************************************
 // *********************** FUNCTION ARGUMENTS **************************
@@ -19,15 +21,7 @@ const privateKey = "private_key_here"; // private key (from token)
 // ************************ EXAMPLE OF USE *****************************
 // *********************************************************************
 
-async function getErrorModelList(privateKey) {
-  // Returns detailed list of all error models supported
-  throwArity(arguments, getErrorModelList);
-  const msg = new Message(publicKey);
-  await msg.sendAsync(privateKey, "errorModelList");
-  return msg.getPayload();
-}
-
-getErrorModelList(privateKey)
+getErrorModelListShort(publicKey, privateKey)
   .then((s) => {
     printObj(s);
   })

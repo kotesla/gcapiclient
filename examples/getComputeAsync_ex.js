@@ -1,6 +1,5 @@
 const { printObj } = require("../shared/utils");
-const Message = require("../types/Message");
-const Payload = require("../types/Payload");
+const { getComputeAsync } = require("../functions/getComputeAsync");
 
 // *********************************************************************
 // *********************** FUNCTION ARGUMENTS **************************
@@ -60,16 +59,15 @@ const privateKey = "private_key_here"; // private key (from token)
 // ************************ EXAMPLE OF USE *****************************
 // *********************************************************************
 
-async function getComputeAsync() {
-  // Returns a list of surveys with all corrections and QA process
-  // as required by the error model given.
-  const msg = new Message(publicKey);
-  msg.setPayload(new Payload(errModelId, mAxes, mRef, stdDev, pcOutliersUser));
-  await msg.sendAsync(privateKey);
-  return msg.getPayload();
-}
-
-getComputeAsync()
+getComputeAsync(
+  publicKey,
+  privateKey,
+  errModelId,
+  mAxes,
+  mRef,
+  stdDev,
+  pcOutliersUser,
+)
   .then((s) => {
     printObj(s);
   })
