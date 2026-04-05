@@ -134,7 +134,6 @@ function isValidInteger(x) {
     // поэтому ноль обрабатываем отдельно
     return true;
   } else {
-    // duplicate radix func to avoid circ. dependency
     const radix = (x, y) => {
       let n = Math.pow(10, y);
       return Math.round(x * n) / n;
@@ -189,6 +188,7 @@ function average(numArray) {
 
 module.exports = {
   printObj,
+  isEqualString,
   throwWhenEmptyString,
   throwWhenInvalidNumber,
   throwWhenInvalidArray,
@@ -198,9 +198,7 @@ module.exports = {
   throwArity,
   throwWhenDoesNotExist,
   exists,
-  sumOfSquares,
   rootOfSumOfSquares,
-  sum,
   takeFirstElements,
   takeLastElements,
   average,

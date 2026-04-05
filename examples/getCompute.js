@@ -53,7 +53,9 @@ const publicKey = "public_key_here"; // private key (from token)
 // some users prefer an extra security layer they can control.
 const privateKey = "private_key_here"; // private key (from token)
 
-async function computeAsync() {
+// Function returns a list of surveys with all corrections and QA process
+// as required by the error model given.
+async function getComputeAsync() {
   const msg = new Message(publicKey);
   msg.setPayload(new Payload(errModelId, mAxes, mRef, stdDev, pcOutliersUser));
   await msg.sendAsync(privateKey);
@@ -61,7 +63,7 @@ async function computeAsync() {
   return res;
 }
 
-computeAsync()
+getComputeAsync()
   .then((s) => {
     printObj(s);
   })

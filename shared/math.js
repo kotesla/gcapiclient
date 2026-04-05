@@ -54,14 +54,10 @@ function throwWhenInvalidMatrix(matrix, errMsg) {
 
 const getGt = (gx, gy, gz) => Math.sqrt(gx * gx + gy * gy + gz * gz);
 const getBt = (bx, by, bz) => Math.sqrt(bx * bx + by * by + bz * bz);
-const getDip = (gx, gy, gz, bx, by, bz) =>
-  Math.asin(
-    (gx * bx + gy * by + gz * bz) / getGt(gx, gy, gz) / getBt(bx, by, bz),
-  );
+
 module.exports = {
   throwWhenInvalidColCountInMatrix,
   throwWhenInvalidMatrix,
   getGt,
   getBt,
-  getDip,
 };
