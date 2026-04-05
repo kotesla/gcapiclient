@@ -1,6 +1,6 @@
-const { printObj, throwArity } = require("../shared/utils");
+const { printObj } = require("../shared/utils");
 const {
-  getErrorModelListShort,
+  getErrorModelListShortAsync,
 } = require("../functions/getErrorModelListShortAsync");
 
 // *********************************************************************
@@ -21,7 +21,7 @@ const privateKey = "private_key_here"; // private key (from token)
 // ************************ EXAMPLE OF USE *****************************
 // *********************************************************************
 
-getErrorModelListShort(publicKey, privateKey)
+getErrorModelListShortAsync(publicKey, privateKey)
   .then((s) => {
     printObj(s);
   })
