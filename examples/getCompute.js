@@ -27,7 +27,8 @@ const mRef = JSON.parse(
 );
 
 // Error model id. The full list of error models and their ids
-// can be retrieved using other API functions
+// can be retrieved using other API functions, such as "getErrorModelList"
+// and "getErrorModelListShort"
 const errModelId = "t04f45fa7u38c1cc59yb836c4473411611cc";
 
 // Number of standard deviations is used:
