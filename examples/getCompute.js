@@ -41,28 +41,28 @@ const stdDev = 3;
 // should be dealt with separately.
 const pcOutliersUser = 15;
 
-// Token consists of public and private keys.
-
-// Public key to encode data in transit. Although secure HTTPS
-// transport is used by default, some users prefer an extra security
-// layer they can control.
+// Server uses public key to find the matching private key
+// to be able to decode and encode message payload.
 const publicKey = "public_key_here"; // private key (from token)
 
-// Private key is not sent over the network, it is used to scramble payload
-// when in transit. Although secure HTTPS transport is used by default,
-// some users prefer an extra security layer they can control.
+// Private key is not sent over the network. It is used to scramble
+// the payload for transit. Although secure HTTPS transport is used
+// by default, many users prefer an extra security layer they can control.
 const privateKey = "private_key_here"; // private key (from token)
 
-// Function returns a list of surveys with all corrections and QA process
-// as required by the error model given.
+// *********************************************************************
+// ************************ FUNCTION TO RUN ****************************
+// *********************************************************************
 async function getComputeAsync() {
+  // Returns a list of surveys with all corrections and QA process
+  // as required by the error model given.
   const msg = new Message(publicKey);
   msg.setPayload(new Payload(errModelId, mAxes, mRef, stdDev, pcOutliersUser));
   await msg.sendAsync(privateKey);
-  const res = msg.getPayload();
-  return res;
+  return msg.getPayload();
 }
-
+// *********************************************************************
+// *********************************************************************
 getComputeAsync()
   .then((s) => {
     printObj(s);

@@ -12,12 +12,19 @@ const publicKey = "public_key_here"; // private key (token)
 // some users prefer an extra security layer they can control.
 const privateKey = "private_key_here"; // private key (token)
 
+// *********************************************************************
+// ************************ FUNCTION TO RUN ****************************
+// *********************************************************************
 async function getErrorModelListShort(privateKey) {
+  // Returns short list of all error models supported, no details
   throwArity(arguments, getErrorModelListShort);
   const msg = new Message(publicKey);
   await msg.sendAsync(privateKey, "errorModelListShort");
   return msg.getPayload();
 }
+// *********************************************************************
+// *********************************************************************
+// *********************************************************************
 
 getErrorModelListShort(privateKey)
   .then((s) => {
