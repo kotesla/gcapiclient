@@ -28,20 +28,14 @@ function matrixTranspose(A) {
 }
 
 function throwWhenInvalidColCountInMatrix(matrix, colCountExpected, errMsg) {
-  throwWhenEmptyString(
-    errMsg,
-    "Error objmodel must be a valid non-empty string",
-  );
+  throwWhenEmptyString(errMsg, "Error types must be a valid non-empty string");
   if (matrixTranspose(matrix).length !== colCountExpected) {
     throw new Error(errMsg);
   }
 }
 
 function throwWhenInvalidMatrix(matrix, errMsg) {
-  throwWhenEmptyString(
-    errMsg,
-    "Error objmodel must be a valid non-empty string",
-  );
+  throwWhenEmptyString(errMsg, "Error types must be a valid non-empty string");
   try {
     throwWhenInvalidArray(matrix);
     throwWhenEmptyArray(matrix);

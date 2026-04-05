@@ -41,7 +41,7 @@ function exists(obj) {
 function throwWhenDoesNotExist(obj, errMsg) {
   throwArity(arguments, throwWhenDoesNotExist);
   if (!exists(errMsg)) {
-    throw new Error("Error objmodel must be provided");
+    throw new Error("Error types must be provided");
   }
   if (!exists(obj)) {
     throw new Error(errMsg);
@@ -118,4 +118,5 @@ module.exports = {
   throwWhenNumberOutsideRange,
   throwArity,
   throwWhenDoesNotExist,
+  exists,
 };

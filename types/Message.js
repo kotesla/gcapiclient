@@ -1,4 +1,8 @@
-const { throwWhenDoesNotExist, throwArity } = require("../shared/utils");
+const {
+  exists,
+  throwWhenDoesNotExist,
+  throwArity,
+} = require("../shared/utils");
 const { encrypt, decrypt } = require("../shared/cypher");
 const { transport } = require("../shared/transport");
 
@@ -34,15 +38,22 @@ Message.prototype.decodePayload = function (privateKey) {
   this.payload = JSON.parse(serialized);
 };
 
-Message.prototype.sendMessageAsync = async function (privateKey, urlExt) {
+Message.prototype.sendAsync = async function (privateKey, urlExt) {
   try {
-    this.encodePayload(privateKey);
-    this.setPayload(
-      await transport("https", "api.geocertainty.com", "80", urlExt, {
-        payload: this.payload,
-      }),
+    if (exists(this.payload)) {
+      this.encodePayload(privateKey);
+    }
+    const reply = await transport(
+      "https",
+      "api.geocertainty.com",
+      "80",
+      urlExt,
+      this,
     );
-    this.decodePayload(privateKey);
+    if (exists(reply.payload)) {
+      this.setPayload(reply.payload);
+      this.decodePayload(privateKey);
+    }
   } catch (e) {
     console.log("Error sending ");
   }
