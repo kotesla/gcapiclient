@@ -25,12 +25,6 @@ function isValidString(x) {
   }
 }
 
-function isEqualString(x, y) {
-  if (isValidString(x) && isValidString(y)) {
-    return y.includes(x) && x.includes(y);
-  } else throw new Error("Both function arguments must be of type String");
-}
-
 function isValidNumber(x) {
   if (x === null || isValidString(x)) {
     return false;
@@ -188,7 +182,6 @@ function average(numArray) {
 
 module.exports = {
   printObj,
-  isEqualString,
   throwWhenEmptyString,
   throwWhenInvalidNumber,
   throwWhenInvalidArray,
