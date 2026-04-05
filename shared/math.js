@@ -1,47 +1,61 @@
-const {throwWhenInvalidNumber, throwWhenInvalidArray, throwWhenEmptyArray, throwWhenArraysHaveDifferentLength} = require("./utils");
+const {
+  throwWhenInvalidNumber,
+  throwWhenInvalidArray,
+  throwWhenEmptyArray,
+  throwWhenArraysHaveDifferentLength,
+  throwWhenEmptyString,
+} = require("./utils");
 
 const createRectArray = (cntRow, cntCol, value) => {
-    [cntRow, cntCol, value].forEach((s) => throwWhenInvalidNumber(s));
-    const rows = new Array(cntRow);
-    for (let i = 0; i < cntRow; i++) {
-        rows[i] = new Array(cntCol).fill(value);
-    }
-    return rows;
+  [cntRow, cntCol, value].forEach((s) => throwWhenInvalidNumber(s));
+  const rows = new Array(cntRow);
+  for (let i = 0; i < cntRow; i++) {
+    rows[i] = new Array(cntCol).fill(value);
+  }
+  return rows;
 };
 
 function matrixTranspose(A) {
-    const cntRow = A.length;
-    const cntCol = A[0].length;
-    let res = createRectArray(cntCol, cntRow, 0);
-    for (let c = 0; c < cntCol; c++) {
-        for (let r = 0; r < cntRow; r++) {
-            res[c][r] = A[r][c];
-        }
+  const cntRow = A.length;
+  const cntCol = A[0].length;
+  let res = createRectArray(cntCol, cntRow, 0);
+  for (let c = 0; c < cntCol; c++) {
+    for (let r = 0; r < cntRow; r++) {
+      res[c][r] = A[r][c];
     }
-    return res;
+  }
+  return res;
 }
 
-function throwWhenInvalidColCountInMatrix(
-    matrix,
-    colCountExpected,
-) {
-    if (matrixTranspose(matrix).length !== colCountExpected) {
-        throw new Error(`Matrix must have ${colCountExpected} columns`);
-    }
+function throwWhenInvalidColCountInMatrix(matrix, colCountExpected, errMsg) {
+  throwWhenEmptyString(
+    errMsg,
+    "Error objmodel must be a valid non-empty string",
+  );
+  if (matrixTranspose(matrix).length !== colCountExpected) {
+    throw new Error(errMsg);
+  }
 }
 
-function throwWhenInvalidMatrix(matrix) {
+function throwWhenInvalidMatrix(matrix, errMsg) {
+  throwWhenEmptyString(
+    errMsg,
+    "Error objmodel must be a valid non-empty string",
+  );
+  try {
     throwWhenInvalidArray(matrix);
     throwWhenEmptyArray(matrix);
-    const tasks = [];
     for (let row of matrix) {
-        throwWhenInvalidArray(row);
-        throwWhenEmptyArray(row);
-        throwWhenArraysHaveDifferentLength(row, matrix[0]);
-        for (let num of row) {
-            throwWhenInvalidNumber(num);
-        }
+      throwWhenInvalidArray(row);
+      throwWhenEmptyArray(row);
+      throwWhenArraysHaveDifferentLength(row, matrix[0]);
+      for (let num of row) {
+        throwWhenInvalidNumber(num);
+      }
     }
+  } catch {
+    throw new Error(errMsg);
+  }
 }
 
-module.exports = {matrixTranspose, throwWhenInvalidMatrix, throwWhenInvalidColCountInMatrix}
+module.exports = { throwWhenInvalidColCountInMatrix, throwWhenInvalidMatrix };
