@@ -2,13 +2,14 @@ const {
   exists,
   throwWhenDoesNotExist,
   throwArity,
+  throwWhenEmptyString,
 } = require("../shared/utils");
 const { encrypt, decrypt } = require("../shared/cypher");
 const { transport } = require("../shared/transport");
 
 function Message(publicKey) {
   throwArity(arguments, Message);
-  throwWhenDoesNotExist(publicKey, "Public key does not exist");
+  throwWhenEmptyString(publicKey, "Public key does not exist");
   this.publicKey = publicKey; // used for all tasks
   this.payload = null; // used for compute tasks only
 }
