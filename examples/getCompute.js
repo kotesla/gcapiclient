@@ -57,7 +57,7 @@ const publicKey = "public_key_here"; // private key (from token)
 const privateKey = "private_key_here"; // private key (from token)
 
 // *********************************************************************
-// ************************ FUNCTION TO RUN ****************************
+// ************************ EXAMPLE OF USE *****************************
 // *********************************************************************
 
 async function getComputeAsync() {
@@ -68,10 +68,6 @@ async function getComputeAsync() {
   await msg.sendAsync(privateKey);
   return msg.getPayload();
 }
-
-// *********************************************************************
-// **************************** EXAMPLE ********************************
-// *********************************************************************
 
 getComputeAsync()
   .then((s) => {

@@ -16,7 +16,7 @@ const publicKey = "public_key_here"; // private key (from token)
 const privateKey = "private_key_here"; // private key (from token)
 
 // *********************************************************************
-// ************************ FUNCTION TO RUN ****************************
+// ************************ EXAMPLE OF USE *****************************
 // *********************************************************************
 
 async function getErrorModelListShort(privateKey) {
@@ -26,9 +26,6 @@ async function getErrorModelListShort(privateKey) {
   await msg.sendAsync(privateKey, "errorModelListShort");
   return msg.getPayload();
 }
-// *********************************************************************
-// **************************** EXAMPLE ********************************
-// *********************************************************************
 
 getErrorModelListShort(privateKey)
   .then((s) => {
