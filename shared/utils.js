@@ -2,6 +2,20 @@ function printObj(obj) {
   console.log(JSON.stringify(obj, null, 3));
 }
 
+function sum(numArray) {
+  return numArray.reduce((a, b) => a + b, 0);
+}
+
+function sumOfSquares(numArray) {
+  const squares = numArray.map((s) => s * s);
+  return sum(squares);
+}
+
+function rootOfSumOfSquares(numArray) {
+  const res = Math.sqrt(sumOfSquares(numArray));
+  return res;
+}
+
 function isValidString(x) {
   try {
     x.split(",");
@@ -81,10 +95,14 @@ function isNumberInRange(num, limLo, limHi) {
   return num <= limHi && num >= limLo;
 }
 
-function throwWhenNumberOutsideRange(num, limLo, limHi) {
+function throwWhenNumberOutsideRange(num, limLo, limHi, errMsg) {
   throwArity(arguments, throwWhenNumberOutsideRange);
+  throwWhenEmptyString(
+    errMsg,
+    "Error message must be a valid non-empty string",
+  );
   if (!isNumberInRange(num, limLo, limHi)) {
-    throw new Error(`Number outside of range allowed (${limLo}-${limHi})`);
+    throw new Error(errMsg);
   }
 }
 
@@ -100,12 +118,73 @@ function isEmptyString(x) {
   return isValidString(x) && [...x.trim()].length < 1;
 }
 
-function throwWhenEmptyString(str, msg) {
-  throwArity(arguments, throwWhenInvalidString);
-  throwWhenInvalidString(msg, "Message must be a valid non-empty string");
+function throwWhenEmptyString(str, errMsg) {
+  throwArity(arguments, throwWhenEmptyString);
+  throwWhenInvalidString(errMsg, "Error message must be a valid string");
   if (isEmptyString(str)) {
-    throw new Error(msg);
+    throw new Error(errMsg);
   }
+}
+
+function isValidInteger(x) {
+  if (!isValidNumber(x)) {
+    return false;
+  } else if (x === 0) {
+    // деление на ноль в следующей проверке,
+    // поэтому ноль обрабатываем отдельно
+    return true;
+  } else {
+    // duplicate radix func to avoid circ. dependency
+    const radix = (x, y) => {
+      let n = Math.pow(10, y);
+      return Math.round(x * n) / n;
+    };
+    return Math.abs(x / radix(x, 0)) === 1;
+  }
+}
+
+function throwWhenInvalidInteger(x) {
+  if (!isValidInteger(x)) {
+    throw new Error("Invalid integer");
+  }
+}
+
+function takeFirstElements(array, cnt) {
+  return takeManyElementsInArray(array, cnt, true);
+}
+
+function takeLastElements(array, cnt) {
+  return takeManyElementsInArray(array, cnt, false);
+}
+
+function takeManyElementsInArray(array, cnt, isAscendingOrder) {
+  throwArity(arguments, takeManyElementsInArray);
+  throwWhenInvalidArray(array);
+  throwWhenInvalidInteger(cnt);
+  const res = [];
+  const len = array.length;
+  if (cnt > array.length) {
+    throw new Error(
+      "Number of elements asked cannot be larger than array length",
+    );
+  }
+  if (cnt < 0) {
+    throw new Error("Nuber of elements must be a positive integer");
+  }
+  if (isAscendingOrder) {
+    for (let i = 0; i < cnt; i++) {
+      res.push(array[i]);
+    }
+  } else {
+    for (let i = len - 1; i > len - cnt - 1; i--) {
+      res.push(array[i]);
+    }
+  }
+  return res;
+}
+
+function average(numArray) {
+  return sum(numArray) / numArray.length;
 }
 
 module.exports = {
@@ -119,4 +198,10 @@ module.exports = {
   throwArity,
   throwWhenDoesNotExist,
   exists,
+  sumOfSquares,
+  rootOfSumOfSquares,
+  sum,
+  takeFirstElements,
+  takeLastElements,
+  average,
 };
