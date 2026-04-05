@@ -2,6 +2,10 @@ const { printObj } = require("../shared/utils");
 const Message = require("../types/Message");
 const Payload = require("../types/Payload");
 
+// *********************************************************************
+// *********************** FUNCTION ARGUMENTS **************************
+// *********************************************************************
+
 // Tool axes measurements is a Nx6 matrix in the form of
 // [[gx,gy,gz,bx,by,bz],[gx,gy,gz,bx,by,bz], ...]
 // where:
@@ -53,6 +57,7 @@ const privateKey = "private_key_here"; // private key (from token)
 // *********************************************************************
 // ************************ FUNCTION TO RUN ****************************
 // *********************************************************************
+
 async function getComputeAsync() {
   // Returns a list of surveys with all corrections and QA process
   // as required by the error model given.
@@ -61,8 +66,11 @@ async function getComputeAsync() {
   await msg.sendAsync(privateKey);
   return msg.getPayload();
 }
+
 // *********************************************************************
+// **************************** EXAMPLE ********************************
 // *********************************************************************
+
 getComputeAsync()
   .then((s) => {
     printObj(s);

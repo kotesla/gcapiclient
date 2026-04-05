@@ -1,6 +1,10 @@
 const Message = require("../types/Message");
 const { printObj, throwArity } = require("../shared/utils");
 
+// *********************************************************************
+// *********************** FUNCTION ARGUMENTS **************************
+// *********************************************************************
+
 // Token consists of public and private keys.
 // Public key to encode data in transit. Although secure HTTPS
 // transport is used by default, some users prefer an extra security
@@ -15,6 +19,7 @@ const privateKey = "private_key_here"; // private key (token)
 // *********************************************************************
 // ************************ FUNCTION TO RUN ****************************
 // *********************************************************************
+
 async function getErrorModelListShort(privateKey) {
   // Returns short list of all error models supported, no details
   throwArity(arguments, getErrorModelListShort);
@@ -23,7 +28,7 @@ async function getErrorModelListShort(privateKey) {
   return msg.getPayload();
 }
 // *********************************************************************
-// *********************************************************************
+// **************************** EXAMPLE ********************************
 // *********************************************************************
 
 getErrorModelListShort(privateKey)
