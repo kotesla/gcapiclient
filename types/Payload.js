@@ -58,6 +58,7 @@ Payload.prototype.throwWhenInvalidInput = function () {
     this.pcOutliersUser,
     "% of outliers must be a valid number",
   );
+  throwWhenNumberOutsideRange(this.pcOutliersUser, 0, 15);
 };
 
 module.exports = Payload;

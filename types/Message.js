@@ -15,10 +15,12 @@ function Message(publicKey) {
 
 // payload is an object as per examples
 Message.prototype.setPayload = function (payload) {
+  throwArity(arguments, this.setPayload);
   this.payload = payload;
 };
 
 Message.prototype.getPayload = function () {
+  throwArity(arguments, this.getPayload);
   return this.payload;
 };
 
@@ -39,6 +41,7 @@ Message.prototype.decodePayload = function (privateKey) {
 };
 
 Message.prototype.sendAsync = async function (privateKey, urlExt) {
+  throwArity(arguments, this.sendAsync);
   try {
     if (exists(this.payload)) {
       this.encodePayload(privateKey);
