@@ -19,6 +19,15 @@ Units of measure:
 2. Magnetic field intensity: Gauss (where 1 Gauss = 1e5 nT)
 3. Angles: radians (where 1 radian = 180/PI)  
 
+Error models support (as of April 2006):
+1. ISCWSA Rev. 4 (BGGM, Std)
+2. ISCWSA Rev. 4 (BGGM, Axial)
+3. ISCWSA Rev. 4 (BGGM, MSA)
+4. OWSG Rev. 2 (IFR1, MSA)
+
+API error model names are intentionally verbose to help users. For example, conventional approach is to drop "BGGM" identifier in error model arguments whenever BGGM is used.   
+
+
 Access management functions:
 1. getTokenInfoAsync - returns token information
 2. getCallHistoryAsync - returns api call history for a given token
