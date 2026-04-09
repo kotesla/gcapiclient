@@ -6,7 +6,9 @@ Examples of use under /api/functions
 
 Access management functions:
 1. getTokenInfoAsync - returns token information
+
 2. getCallHistoryAsync - returns api call history for a given token
+
 3. getBalanceAsync - returns daily quota of API calls remaining
  
 Compute functions:
