@@ -13,5 +13,7 @@ Access management functions:
  
 Compute functions:
 1. getErrorModelListAsync - returns full list of error models supported by the API
+
 2. getErrorModelListShortAsync - returns short list of error models supported by API, primarily for the purpose of getting error model ids for use in other function calls
+
 3. getComputeAsync - returns interpreted MWD surveys with all corrections applied and qc flags as per error model specifications 
