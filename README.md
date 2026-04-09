@@ -1,4 +1,6 @@
 # gcapiclient
+API ver. 0.1.0
+
 API function and code examples for connecting to Geocertainty API 
 
 Folder structure:
@@ -25,6 +27,3 @@ Individual tokens can be requested at:
 1. https://geocertainty.com/en/#rec548900416 (website)
 2. https://t.me/geocertainty (Telegram)
 3. https://www.linkedin.com/in/slava-kotelnikov-229210130/ (LinkedIn)
-
-Compute
-
