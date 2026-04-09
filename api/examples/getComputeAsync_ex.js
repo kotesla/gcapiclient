@@ -75,19 +75,3 @@ getComputeAsync(
     .catch((e) => {
         console.log(e);
     });
-
-// getComputeAsync(
-//   publicKey,
-//   privateKey,
-//   errModelId,
-//   mAxes,
-//   mRef,
-//   stdDev,
-//   pcOutliersUser,
-// )
-//   .then((s) => {
-//     printObj(s);
-//   })
-//   .catch((e) => {
-//     console.log(e);
-//   });
