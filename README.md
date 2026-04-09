@@ -32,13 +32,13 @@ Error models support (as of April 2006):
 3. ISCWSA Rev. 4 (BGGM, MSA)
 4. OWSG Rev. 2 (IFR1, MSA)
 
-API supports error models that follow ISCWSA rev. 4 / OWSG Rev.2 protocols and make use of axial/multi-station corrections or use no corrections at all. Many more models can be created by tweaking error terms of these existing models, provided they follow the same principles. Pls make a request if you need a new model created to fit your specific needs.   
+API supports error models that follow ISCWSA rev. 4 / OWSG Rev.2 protocols and make use of axial/multi-station corrections or use no corrections at all. Many more models can be created by tweaking error terms of these existing models, provided they follow the same principle. Pls make a request if you need a new model created to fit your specific needs.   
 
 Error model names were made intentionally verbose to help inexperienced users navigate the subject. For example, conventional approach is to drop "BGGM" identifier in error model arguments whenever BGGM is used for geomagnetic model, so, keep that in mind when looking for equivalents in your well planning software.
 
 ABOUT MSA PROCESS
 
-A user must ensure that dataset is consistent, i.e. dataset surveys have been acquired by the same BHA and the same MWD tool. Should there be noisy surveys or surveys from different BHAs, algorithm will begin removing outliers until a viable solution is found or until the outlier limit is reached. Default outlier limit is 15 percent of the dataset. If no viable solution is found after having reached the outlier limit, algorithm will return an empty solution. User can set custom percent of outliers from 0% to 15% when creating Payload. Any custom outlier limit above 15% will be reset to 15% by the system. Any       
+A user must ensure that dataset is consistent, i.e. dataset surveys have been acquired by the same BHA and the same MWD tool. Should there be noisy surveys or surveys from different BHAs, algorithm will begin removing outliers until a viable solution is found or until the outlier limit is reached. Default outlier limit is 15 percent of the dataset. If no viable solution is found after having reached the outlier limit, algorithm will return an empty solution. User can set custom percent of outliers from 0% to 15% when creating Payload. Any custom outlier limit above 15% will be reset to 15% by the system.     
 
 
 
@@ -46,12 +46,11 @@ ABOUT ACCESS MANAGEMENT
 
 API access is managed by use of tokens. Each token consists of a public key and a primary key. Public key is sent across the network to identify the token in use. Private key is kept secret and is used by the both client API and server back-end to encode/decode sensitive user information for transit, adding an extra security layer a user can control.
 
-Each API function is designed to call server at a specific URL extension. To prevent abuse of company's compute resources, each token limits the number of times each API function can be called during the day. User can obtain the detailed information about token capacity, remaining daily quotas and API call history by calling the relevant API functions listed above.
+Each API function is designed to call server at a specific URL extension. To prevent abuse of company's compute resources, each token limits the number of times each API function can be called during the 24-hour period. User can obtain the detailed information about token capacity, remaining daily quotas and API call history by calling the relevant API functions listed above.
 
 Default token capacity:
-1. Compute function: 100 calls per day
-2. Other functions: 500 calls per day
-3. 300 survey stations per 1 API call 
+1. Compute function: 100 calls per day, 300 surveys per call
+2. Other functions: 500 calls per day  
 
 Default token capacity was chosen such that it should meet the needs of a working rig which that takes less than 100 surveys per day on average. Pls make a request should your specific use case require different token capacity. 
    
