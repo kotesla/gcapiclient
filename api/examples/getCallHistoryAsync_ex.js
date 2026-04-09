@@ -1,7 +1,9 @@
 const { getKeys } = require('../keys/getKeys');
 
 const { printObj } = require('../shared/utils');
-const { getCallHistoryAsync } = require('../getCallHistoryAsync');
+const {
+    getCallHistoryAsync,
+} = require('../functions/getCallHistoryAsync');
 
 // *********************************************************************
 // *********************** FUNCTION ARGUMENTS **************************

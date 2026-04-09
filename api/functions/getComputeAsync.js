@@ -1,9 +1,9 @@
-const Message = require('./types/Message');
-const Payload = require('./types/Payload');
+const Message = require('../types/Message');
+const Payload = require('../types/Payload');
 const {
     throwArity,
     throwWhenEmptyString,
-} = require('./shared/utils');
+} = require('../shared/utils');
 
 // Returns a list of surveys with all corrections
 // and QA flags as required by the error model given.

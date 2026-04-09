@@ -1,6 +1,6 @@
 const { getKeys } = require('../keys/getKeys');
 const { printObj } = require('../shared/utils');
-const { getBalanceAsync } = require('../getBalanceAsync');
+const { getBalanceAsync } = require('../functions/getBalanceAsync');
 
 // *********************************************************************
 // *********************** FUNCTION ARGUMENTS **************************

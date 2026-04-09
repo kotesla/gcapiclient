@@ -1,7 +1,7 @@
 const { printObj } = require('../shared/utils');
 const {
     getErrorModelListShortAsync,
-} = require('../getErrorModelListShortAsync');
+} = require('../functions/getErrorModelListShortAsync');
 const { getKeys } = require('../keys/getKeys');
 
 // *********************************************************************

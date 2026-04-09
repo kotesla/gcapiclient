@@ -1,6 +1,8 @@
 const { getKeys } = require('../keys/getKeys');
 const { printObj } = require('../shared/utils');
-const { getTokenInfoAsync } = require('../getTokenInfoAsync');
+const {
+    getTokenInfoAsync,
+} = require('../functions/getTokenInfoAsync');
 
 // *********************************************************************
 // *********************** FUNCTION ARGUMENTS **************************

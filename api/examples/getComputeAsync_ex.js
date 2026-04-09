@@ -1,5 +1,5 @@
 const { printObj } = require('../shared/utils');
-const { getComputeAsync } = require('../getComputeAsync');
+const { getComputeAsync } = require('../functions/getComputeAsync');
 const { getKeys } = require('../keys/getKeys');
 
 // *********************************************************************

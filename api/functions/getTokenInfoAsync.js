@@ -1,8 +1,8 @@
-const Message = require('./types/Message');
+const Message = require('../types/Message');
 const {
     throwArity,
     throwWhenEmptyString,
-} = require('./shared/utils');
+} = require('../shared/utils');
 
 // Returns token information
 async function getTokenInfoAsync(publicKey, privateKey) {
