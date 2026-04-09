@@ -1,7 +1,6 @@
-const { printObj } = require("../shared/utils");
-const {
-  getErrorModelListShortAsync,
-} = require("../functions/getErrorModelListShortAsync");
+const { getKeys } = require('../keys/getKeys');
+const { printObj } = require('../shared/utils');
+const { getTokenInfoAsync } = require('../getTokenInfoAsync');
 
 // *********************************************************************
 // *********************** FUNCTION ARGUMENTS **************************
@@ -10,21 +9,21 @@ const {
 // Public key to encode data in transit. Although secure HTTPS
 // transport is used by default, some users prefer an extra security
 // layer they can control.
-const publicKey = "public_key_here"; // private key (from token)
+const publicKey = getKeys().publicKey; // private key (from token)
 
 // Private key is not sent over the network, it is used to scramble payload
 // when in transit. Although secure HTTPS transport is used by default,
 // some users prefer an extra security layer they can control.
-const privateKey = "private_key_here"; // private key (from token)
+const privateKey = getKeys().privateKey; // private key (from token)
 
 // *********************************************************************
 // ************************ EXAMPLE OF USE *****************************
 // *********************************************************************
 
-getErrorModelListShortAsync(publicKey, privateKey)
-  .then((s) => {
-    printObj(s);
-  })
-  .catch((e) => {
-    console.log(e);
-  });
+getTokenInfoAsync(publicKey, privateKey)
+    .then((s) => {
+        printObj(s);
+    })
+    .catch((e) => {
+        console.log(e);
+    });

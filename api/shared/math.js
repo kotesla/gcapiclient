@@ -4,6 +4,7 @@ const {
   throwWhenEmptyArray,
   throwWhenArraysHaveDifferentLength,
   throwWhenEmptyString,
+  rootOfSumOfSquares,
 } = require("./utils");
 
 const createRectArray = (cntRow, cntCol, value) => {
@@ -52,8 +53,12 @@ function throwWhenInvalidMatrix(matrix, errMsg) {
   }
 }
 
-const getGt = (gx, gy, gz) => Math.sqrt(gx * gx + gy * gy + gz * gz);
-const getBt = (bx, by, bz) => Math.sqrt(bx * bx + by * by + bz * bz);
+function getGt(gx, gy, gz) {
+  return rootOfSumOfSquares([gx, gy, gz]);
+}
+function getBt(bx, by, bz) {
+  return rootOfSumOfSquares([bx, by, bz]);
+}
 
 module.exports = {
   throwWhenInvalidColCountInMatrix,

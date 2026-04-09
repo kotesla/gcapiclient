@@ -25,6 +25,18 @@ function isValidString(x) {
   }
 }
 
+function isEqualString(x, y) {
+  if (isValidString(x) && isValidString(y)) {
+    if (isEmptyString(x) && isEmptyString(y)) {
+      return true;
+    } else {
+      return [...x].length === [...y].length && x.includes(y);
+    }
+  } else {
+    throw new Error("Both function arguments must be of type String");
+  }
+}
+
 function isValidNumber(x) {
   if (x === null || isValidString(x)) {
     return false;
@@ -195,4 +207,5 @@ module.exports = {
   takeFirstElements,
   takeLastElements,
   average,
+  isEqualString,
 };

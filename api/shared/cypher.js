@@ -1,4 +1,4 @@
-const crypto = require('crypto-js');
+const crypto = require('../../lib/crypto-js');
 
 function encrypt(text, key) {
     return crypto.AES.encrypt(text, key).toString();
