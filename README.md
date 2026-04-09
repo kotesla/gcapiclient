@@ -12,6 +12,13 @@ Compute functions:
 2. getErrorModelListShortAsync - returns the short list of error models supported by API, primarily for the purpose of getting error model ids for use in other function calls
 3. getComputeAsync - returns interpreted MWD surveys with all corrections applied and qc flags as per error model specifications.
 
+Access management functions:
+1. getTokenInfoAsync - returns token information
+2. getCallHistoryAsync - returns api call history for a given token
+3. getBalanceAsync - returns daily quota of API calls remaining
+
+ABOUT COMPUTE
+
 API compute has been designed to make directional survey interpretation accessible to users with little to no experience in the subject. All user is required to do is to supply a set of raw inputs and the id of the target error model to use. The rest is taken care of by the API. The set of inputs required is hard-coded into Payload object properties, preventing mistakes and omissions.
 
 Units of measure:
@@ -25,13 +32,9 @@ Error models support (as of April 2006):
 3. ISCWSA Rev. 4 (BGGM, MSA)
 4. OWSG Rev. 2 (IFR1, MSA)
 
-Error model names were made intentionally verbose to help inexperience users navigate the subject. For example, conventional approach is to drop "BGGM" identifier in error model arguments whenever BGGM is used for geomagnetic model, so, keep that in mind when looking for equivalents in your well planning software.    
+Error model names were made intentionally verbose to help inexperienced users navigate the subject. For example, conventional approach is to drop "BGGM" identifier in error model arguments whenever BGGM is used for geomagnetic model, so, keep that in mind when looking for equivalents in your well planning software.    
 
-
-Access management functions:
-1. getTokenInfoAsync - returns token information
-2. getCallHistoryAsync - returns api call history for a given token
-3. getBalanceAsync - returns daily quota of API calls remaining
+ABOUT ACCESS MANAGEMENT
 
 API access is managed by use of tokens. Each token consists of a public key and a primary key. Public key is sent across the network to identify the token in use. Private key is kept secret and is used by the both client API and server back-end to encode/decode sensitive user information for transit, adding an extra security layer a user can control.
 
