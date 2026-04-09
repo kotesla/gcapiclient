@@ -17,4 +17,4 @@ Compute functions:
 
 API access is managed by use of tokens. Each token consists of a public key and a primary key. Public key is sent across the network to identify the token in use. Private key is kept secret and is used by the both client API and server back-end to encode/decode sensitive user information for transit, adding an extra security layer a user can control.
 
-Each API function is designed to call server at a specific URL extension. To prevent abuse of company's compute resources, each token limits the number of times each API function can be called. User can obtain the detailed information about token capacity by calling "getTokenInfoAsync" function. 
+Each API function is designed to call server at a specific URL extension. To prevent abuse of company's compute resources, each token limits the number of times each API function can be called during the day. User can obtain the detailed information about token capacity by calling "getTokenInfoAsync" function. 
