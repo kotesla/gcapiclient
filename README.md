@@ -52,7 +52,7 @@ Default token capacity:
 1. Compute function: 100 calls per day, 300 surveys per call
 2. Other functions: 500 calls per day  
 
-Default token capacity was chosen such that it should meet the needs of a working rig which that takes less than 100 surveys per day on average. Pls make a request should your specific use case require different token capacity. 
+Default token capacity was chosen to meet the needs of a working rig that takes less than 100 surveys per day on average. Pls make a request should your specific use case require different token capacity. 
    
 Individual tokens can be requested at:
 1. https://geocertainty.com/en/#rec548900416 (website)
