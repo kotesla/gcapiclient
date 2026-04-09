@@ -14,6 +14,11 @@ Compute functions:
 
 API compute has been designed to make directional survey interpretation accessible to users with little to no experience in the subject. All user is required to do is to supply a set of raw inputs and the id of the target error model to use. The rest is taken care of by the API. The set of inputs required is hard-coded into Payload object properties, preventing mistakes and omissions.
 
+Units of measure:
+1. Gravity: Relative to Standard G (1 std G. = 9.80665 m/s2)
+2. Magnetic field intensity: Gauss (1 Gauss = 1e5 nT)
+3. Angles: radians (1 radian = 180/PI)  
+
 Access management functions:
 1. getTokenInfoAsync - returns token information
 2. getCallHistoryAsync - returns api call history for a given token
