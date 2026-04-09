@@ -22,9 +22,9 @@ API access is managed by use of tokens. Each token consists of a public key and 
 Each API function is designed to call server at a specific URL extension. To prevent abuse of company's compute resources, each token limits the number of times each API function can be called during the day. User can obtain the detailed information about token capacity, remaining daily quotas and API call history by calling the relevant API functions listed above.
    
 Individual tokens can be requested at:
--- https://geocertainty.com/en/#rec548900416 (website)
--- https://t.me/geocertainty (Telegram)
--- https://www.linkedin.com/in/slava-kotelnikov-229210130/ (LinkedIn)
+1. https://geocertainty.com/en/#rec548900416 (website)
+2. https://t.me/geocertainty (Telegram)
+3. https://www.linkedin.com/in/slava-kotelnikov-229210130/ (LinkedIn)
 
 Compute
 
