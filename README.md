@@ -1,13 +1,13 @@
 # gcapiclient
 Code examples for connecting to Geocertainty API 
 
-// Returns daily quota remaining
-async function getBalanceAsync(publicKey, privateKey) {
-throwArity(arguments, getBalanceAsync);
-throwWhenEmptyString(publicKey, 'Invalid public key');
-throwWhenEmptyString(privateKey, 'Invalid private key');
-const msg = new Message(publicKey);
-const urlExt = 'balance';
-await msg.sendAsync(privateKey, urlExt);
-return msg.getPayload();
-}
+Functions under /api
+
+Access management functions:
+1. getBalanceAsync - returns daily quota remaining
+2. getTokenInfoAsync - returns token information
+3. getCallHistoryAsync - returns api call history
+
+Compute function:
+4. getEmdlList - returns full list of error models supported by the API (id,name,args)
+5. getEmdlListShort - returns short list of error models supported by API (id,name,args,)
