@@ -25,7 +25,7 @@ Error models support (as of April 2006):
 3. ISCWSA Rev. 4 (BGGM, MSA)
 4. OWSG Rev. 2 (IFR1, MSA)
 
-API error model names are intentionally verbose to help users. For example, conventional approach is to drop "BGGM" identifier in error model arguments whenever BGGM is used.   
+Error model names were made intentionally verbose to help inexperience users navigate the subject. For example, conventional approach is to drop "BGGM" identifier in error model arguments whenever BGGM is used for geomagnetic model, so, keep that in mind when looking for equivalents in your well planning software.    
 
 
 Access management functions:
