@@ -202,6 +202,32 @@ function takeManyElementsInArray(array, cnt, isAscendingOrder) {
     return res;
 }
 
+function isValidError(err) {
+    throwArity(arguments, isValidError);
+    return err instanceof Error;
+}
+
+function throwWhenInvalidError(err) {
+    throwArity(arguments, throwWhenInvalidError);
+    if (!isValidError(err)) {
+        throw new Error(
+            'Function argument must be an Error instance'
+        );
+    }
+}
+
+function errorIncludesText(err, search_string) {
+    throwArity(arguments, errorIncludesText);
+    throwWhenInvalidError(err);
+    throwWhenEmptyString(
+        search_string,
+        'Search string must a valid non-empty string'
+    );
+    return err.message
+        .toLowerCase()
+        .includes(search_string.toLowerCase());
+}
+
 function isEmptyString(x) {
     throwArity(arguments, isEmptyString);
     return isValidString(x) && [...x.trim()].length < 1;
@@ -212,6 +238,7 @@ function average(numArray) {
 }
 
 module.exports = {
+    errorIncludesText,
     printObj,
     throwWhenEmptyString,
     throwWhenInvalidNumber,

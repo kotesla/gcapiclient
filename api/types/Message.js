@@ -3,9 +3,9 @@ const {
     throwWhenDoesNotExist,
     throwArity,
     throwWhenEmptyString,
-    isEqualString,
     copyProps,
     isEmptyString,
+    errorIncludesText,
 } = require('../shared/utils');
 const { encrypt, decrypt } = require('../shared/cypher');
 const { transport } = require('../shared/transport');
@@ -45,7 +45,13 @@ Message.prototype.decodePayload = function (privateKey) {
     throwArity(arguments, this.decodePayload);
     throwWhenDoesNotExist(privateKey, 'Private key does not exist');
     throwWhenDoesNotExist(this.payload, 'Payload does not exist');
-    let serialized = decrypt(this.payload, privateKey);
+    let serialized;
+    try {
+        serialized = decrypt(this.payload, privateKey);
+    } catch (e) {
+        throwWhenPrivateKeyError(e);
+        throw e;
+    }
     this.payload = JSON.parse(serialized);
 };
 
@@ -56,21 +62,26 @@ Message.prototype.dropPayload = function () {
     }
 };
 
+function throwWhenPrivateKeyError(err) {
+    if (errorIncludesText(err, 'Malformed')) {
+        throw new Error(
+            'Unable to decode payload, check that client software is using the correct private key.'
+        );
+    }
+}
+
 function throwWhenCommError(err) {
-    const fn = (err, search_string) => {
-        return err.message.includes(search_string);
-    };
-    if (fn(err, 'ECONNREFUSED')) {
+    if (errorIncludesText(err, 'ECONNREFUSED')) {
         throw new Error(
             'Error sending message (server not responding)'
         );
     }
-    if (fn(err, 'ERR_NETWORK')) {
+    if (errorIncludesText(err, 'ERR_NETWORK')) {
         throw new Error(
             'Error sending message (check your internet connection)'
         );
     }
-    if (fn(err, 'ECONNRESET')) {
+    if (errorIncludesText(err, 'ECONNRESET')) {
         throw new Error(
             'Error sending message (server dropped connection)'
         );
