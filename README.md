@@ -59,9 +59,9 @@ For results, API returns magnetometer bias and scale values and their uncertaint
 
 ABOUT AXIAL CORRECTION
 
-API returns 2 sequences of results. First sequence is the best solution results, second sequence is the second-best solution results. Each sequence element has relevant qc flags. 
+API returns 2 sequences of results. First sequence is the best solution results, second sequence is the second-best solution results. Each sequence element has relevant qc flags.
 
-API is likely to yield an unstable solution at sensor attitudes in the no-go zone (sin(Inc)*sin(Az magnetic) >= 0.85). These are natural constraints of the algorithm and have nothing to do with the implementation. Sensor degradation may accelerate the onset of these effects.  
+API is likely to yield an unstable solution at sensor attitudes in the no-go zone (sin(Inc)*sin(Az magnetic) >= 0.85). These are natural constraints of the algorithm and have nothing to do with the implementation. Sensor degradation may accelerate the onset of these effects.
 
 ABOUT ACCESS MANAGEMENT
 
