@@ -8,9 +8,7 @@ const { getKeys } = require('../keys/getKeys');
 // *********************** FUNCTION ARGUMENTS **************************
 // *********************************************************************
 
-// Public key to encode data in transit. Although secure HTTPS
-// transport is used by default, some users prefer an extra security
-// layer they can control.
+// Public key is sent along with payload to identify token in use.
 const publicKey = getKeys().publicKey; // private key (from token)
 
 // Private key is not sent over the network, it is used to scramble payload
