@@ -26,19 +26,36 @@ Units of measure:
 2. Magnetic field intensity: Gauss (where 1 Gauss = 1e5 nT)
 3. Angles: radians (where 1 radian = 180/PI)  
 
+Geomagnetic models support (as of April 2006):
+1. BGGM
+2. LRGM
+3. HRGM
+4. IFR1
+5. IFR2
+
+Technically, these geomagnetic reference models differ from one another in error term values for DECG (AZ), DECR, DBH, DBHR, MDI, MDIR, MFI, MFIR. Custom geomagnetic models can be added into system provided that user supplies these error term values.  
+
+API runs on reference data provided by the user (Gref, Bref, Dref). It is user's responsibility to ensure that accuracy of the reference data supplied meets the specs of the error model selected for API inputs.      
+
 Error models support (as of April 2006):
 1. ISCWSA Rev. 4 (BGGM, Std)
 2. ISCWSA Rev. 4 (BGGM, Axial)
 3. ISCWSA Rev. 4 (BGGM, MSA)
 4. OWSG Rev. 2 (IFR1, MSA)
 
-API supports error models that follow ISCWSA rev. 4 / OWSG Rev.2 protocols and make use of axial/multi-station corrections or use no corrections at all. Many more models can be created by tweaking error terms of these existing models, provided they follow the same principle. Pls make a request if you need a new model created to fit your specific needs.   
+API supports error models that follow ISCWSA rev. 4 / OWSG Rev.2 protocols and make use of axial/multi-station corrections or use no corrections at all. Many more models can be created by tweaking error terms of these existing models, provided they follow the same principle. Pls make a request if you need a new model created to fit your specific use case.
 
 Error model names were made intentionally verbose to help inexperienced users navigate the subject. For example, conventional approach is to drop "BGGM" identifier in error model arguments whenever BGGM is used for geomagnetic model, so, keep that in mind when looking for equivalents in your well planning software.
 
-ABOUT MSA PROCESS
+ABOUT MSA CORRECTION
 
 A user must ensure that dataset is consistent, i.e. dataset surveys have been acquired by the same BHA and the same MWD tool. Should there be noisy surveys or surveys from different BHAs, algorithm will begin removing outliers until a viable solution is found or until the outlier limit is reached. Default outlier limit is 15 percent of the dataset. If no viable solution is found after having reached the outlier limit, algorithm will return an empty solution. User can set custom percent of outliers from 0% to 15% when creating Payload object (see examples). Any custom outlier limit above 15% will be reset to 15% by the system.
+
+ABOUT AXIAL CORRECTION
+
+API returns 2 sequences of results. First sequence is the best solution results, second sequence is the second-best solution results. 
+
+API may yield an unstable solution at sensor attitudes in no-go zone (sin(Inc)*sin(Az magnetic) >= 0.85). Sensor degradation may accelerate these effects. 
 
 ABOUT ACCESS MANAGEMENT
 
