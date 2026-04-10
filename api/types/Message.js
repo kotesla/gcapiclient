@@ -4,6 +4,8 @@ const {
     throwArity,
     throwWhenEmptyString,
     isEqualString,
+    copyProps,
+    isEmptyString,
 } = require('../shared/utils');
 const { encrypt, decrypt } = require('../shared/cypher');
 const { transport } = require('../shared/transport');
@@ -56,25 +58,22 @@ Message.prototype.dropPayload = function () {
 
 function throwWhenCommError(err) {
     const fn = (err, search_string) => {
-        return (
-            err.message.includes(search_string) ||
-            isEqualString(err.code, search_string)
-        );
+        return err.message.includes(search_string);
     };
     if (fn(err, 'ECONNREFUSED')) {
         throw new Error(
             'Error sending message (server not responding)'
         );
-    } else if (fn(err, 'ERR_NETWORK')) {
+    }
+    if (fn(err, 'ERR_NETWORK')) {
         throw new Error(
             'Error sending message (check your internet connection)'
         );
-    } else if (fn(err, 'ECONNRESET')) {
+    }
+    if (fn(err, 'ECONNRESET')) {
         throw new Error(
             'Error sending message (server dropped connection)'
         );
-    } else {
-        throw new Error('Error sending message');
     }
 }
 
@@ -91,14 +90,16 @@ Message.prototype.sendAsync = async function (privateKey, urlExt) {
             urlExt,
             this
         );
-        if (exists(reply.payload)) {
-            this.setPayload(reply.payload);
+        copyProps(reply, this);
+        if (exists(this.payload)) {
             this.decodePayload(privateKey);
         }
-        this.setLog(reply.log);
+        if (exists(this.log) && !isEmptyString(this.log)) {
+            throw new Error(this.log);
+        }
     } catch (e) {
-        this.dropPayload();
         throwWhenCommError(e);
+        throw e;
     }
 };
 
