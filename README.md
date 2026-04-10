@@ -6,6 +6,7 @@ API function and code examples for connecting to Geocertainty API
 Folder structure:
 1. Functions under /api/functions
 2. Examples of use under /api/examples
+3. Public and private keys under api/keys
 
 Compute functions:
 1. getErrorModelListAsync - returns the full list of error models supported by the API (specifications)
