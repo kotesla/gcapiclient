@@ -44,7 +44,7 @@ Error models support (as of April 2006):
 3. ISCWSA Rev. 4 (BGGM, MSA)
 4. OWSG Rev. 2 (IFR1, MSA)
 
-API supports error models that follow ISCWSA rev. 4 / OWSG Rev.2 protocols and make use of axial/multi-station corrections or use no corrections at all. Many more models can be created by tweaking error terms of these existing models, provided they follow the same principle. Pls make a request if you need a new model created to fit your specific use case.
+API supports error models that follow ISCWSA rev. 4 / OWSG Rev.2 protocols and make use of axial/multi-station corrections or use no corrections at all. Many more models can be created by tweaking error terms of these existing models, provided they follow the same principle. Pls make a request if you need a new error model created to fit your specific use case.
 
 Error model names were made intentionally verbose to help inexperienced users navigate the subject. For example, conventional approach is to drop "BGGM" identifier in error model arguments whenever BGGM is used for geomagnetic model, so, keep that in mind when looking for equivalents in your well planning software.
 
