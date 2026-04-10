@@ -49,19 +49,19 @@ Error model names were made intentionally verbose to help inexperienced users na
 
 ABOUT DEPTH AND TIME
 
-API does not use Depth Or Time as input parameters. Instead, API ensures the order of input always matches the order of output. It is user's responsibility to assign proper identifiers (depth, time) to the data sequence.    
+API does not use depth or time as input parameters. Instead, API ensures the order of input always matches the order of output. It is user's responsibility to assign proper identifiers (depth, time) to the data sequence.    
 
 ABOUT MSA CORRECTION
 
-A user must ensure that dataset is consistent, i.e. dataset surveys have been acquired by the same BHA and the same MWD tool. Should there be noisy surveys or surveys from different BHAs, algorithm will be removing outliers until a viable solution is found or until the outlier limit is reached. The default outlier limit is 15 percent of the dataset. If no viable solution is found after having reached the outlier limit, algorithm will return an empty solution. User can set custom percent of outliers from 0% to 15% when creating Payload object (see compute example). Any custom outlier limit above 15% will be reset to 15% by the system.
+A user must ensure that dataset is consistent, i.e. dataset surveys have been acquired by the same BHA and the same MWD tool. Should there be noisy surveys or surveys from different BHAs, algorithm will be removing outliers until a viable solution is found or until the outlier limit is reached. The default outlier limit is 15 percent of the dataset. If no viable solution is found after having reached the outlier limit, algorithm will return an empty solution. User can set custom percent of outliers from 0% to 15% when creating Payload object (see compute example). Any custom outlier limit above 15% will be reset to 15% by the system. Outlier stations, when detected, do not have any effect on the corresponding MSA solution.
 
-For results, API returns magnetometer bias and scale values used to correct the MWD measurements, magnetometer bias and scale uncertainties, outlier indices (zero based), qc flags. Outlier stations, when detected, do not have any contribution in any given MSA solution.  
+For results, API returns magnetometer bias and scale values used to correct the MWD measurements, magnetometer bias and scale uncertainties, outlier indices (zero based), qc flags, corrected axes measurements.
 
 ABOUT AXIAL CORRECTION
 
-API returns 2 sequences of results. First sequence is the best solution results, second sequence is the second-best solution results. 
+API returns 2 sequences of results. First sequence is the best solution results, second sequence is the second-best solution results. Each sequence element has relevant qc flags. 
 
-API may yield an unstable solution at sensor attitudes in the no-go zone (sin(Inc)*sin(Az magnetic) >= 0.85). Sensor degradation may accelerate the onset of these effects. 
+API is likely to yield an unstable solution at sensor attitudes in the no-go zone (sin(Inc)*sin(Az magnetic) >= 0.85). These are natural constraints of the algorithm and have nothing to do with the implementation. Sensor degradation may accelerate the onset of these effects.  
 
 ABOUT ACCESS MANAGEMENT
 
