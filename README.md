@@ -53,9 +53,9 @@ API does not use depth or time as input parameters. Instead, API ensures the ord
 
 ABOUT MSA CORRECTION
 
-A user must ensure that dataset is consistent, i.e. dataset surveys have been acquired by the same BHA and the same MWD tool. Should there be noisy surveys or surveys from different BHAs, algorithm will be removing outliers until a viable solution is found or until the outlier limit is reached. The default outlier limit is 15 percent of the dataset. If no viable solution is found after having reached the outlier limit, algorithm will return an empty solution. User can set custom percent of outliers from 0% to 15% when creating Payload object (see compute example). Any custom outlier limit above 15% will be reset to 15% by the system. Outlier stations, when detected, do not have any effect on the corresponding MSA solution.
+A user must ensure that dataset is consistent, i.e. dataset surveys have been acquired by the same BHA and the same MWD tool. Should there be noisy surveys or surveys from different BHAs, algorithm will be removing outliers until a viable solution is found or until the outlier limit is reached. The default outlier limit is 15 percent of the dataset. If no viable solution is found after having reached the outlier limit, algorithm will return an empty solution. User can set custom percent of outliers from 0% to 15% when creating Payload object (see compute example). Any custom outlier limit above 15% will be reset to 15% by the system. Outlier stations, when detected, do not have any effect on the relevant MSA solution.
 
-For results, API returns magnetometer bias and scale values used to correct the MWD measurements, magnetometer bias and scale uncertainties, outlier indices (zero based), qc flags, corrected axes measurements.
+For results, API returns magnetometer bias and scale values and their uncertainties, outlier indices (zero based), qc flags, corrected MWD measurements.
 
 ABOUT AXIAL CORRECTION
 
