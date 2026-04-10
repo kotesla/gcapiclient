@@ -71,8 +71,8 @@ API access is managed by use of tokens. Each token consists of a public key and 
 Each API function is designed to call server at a specific URL extension. To prevent abuse of company's compute resources, each token limits the number of times each API function can be called during the 24-hour period. User can obtain the detailed information about token capacity, remaining daily quotas and API call history by calling the relevant API functions listed above.
 
 Default token capacity:
-1. Compute function: 100 calls per day, 300 surveys per call
-2. Other functions: 500 calls per day  
+1. Compute function: 100 API calls per day, 300 surveys per API call
+2. Auxiliary functions: 500 API calls per day  
 
 Default token capacity was chosen to meet the needs of a working rig that takes less than 100 surveys per day on average. Pls make a request should your specific use case require different token capacity. 
    
