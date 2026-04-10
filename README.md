@@ -33,9 +33,9 @@ Geomagnetic models support (as of April 2006):
 4. IFR1
 5. IFR2
 
-Technically, these geomagnetic reference models differ from one another in error term values for DECG (AZ), DECR, DBH, DBHR, MDI, MDIR, MFI, MFIR. Custom geomagnetic models can be added into system provided that user supplies these error term values.  
+Technically, these geomagnetic reference models differ from one another in error term values for DECG (AZ), DECR, DBH, DBHR, MDI, MDIR, MFI, MFIR. Custom geomagnetic models can be added into the system provided that user supplies these error term values.  
 
-API runs on reference data provided by the user (Gref, Bref, Dref). It is user's responsibility to ensure that accuracy of the reference data supplied meets the specs of the error model selected for API inputs.      
+API runs on reference data provided by the user (Gref, Bref, Dref). It is user's responsibility to ensure that accuracy of the reference data supplied meets the specs of the error model id used in API inputs.      
 
 Error models support (as of April 2006):
 1. ISCWSA Rev. 4 (BGGM, Std)
@@ -55,7 +55,7 @@ ABOUT AXIAL CORRECTION
 
 API returns 2 sequences of results. First sequence is the best solution results, second sequence is the second-best solution results. 
 
-API may yield an unstable solution at sensor attitudes in no-go zone (sin(Inc)*sin(Az magnetic) >= 0.85). Sensor degradation may accelerate these effects. 
+API may yield an unstable solution at sensor attitudes in the no-go zone (sin(Inc)*sin(Az magnetic) >= 0.85). Sensor degradation may accelerate the onset of these effects. 
 
 ABOUT ACCESS MANAGEMENT
 
