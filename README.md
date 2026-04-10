@@ -49,7 +49,7 @@ Error model names were made intentionally verbose to help inexperienced users na
 
 ABOUT MSA CORRECTION
 
-A user must ensure that dataset is consistent, i.e. dataset surveys have been acquired by the same BHA and the same MWD tool. Should there be noisy surveys or surveys from different BHAs, algorithm will begin removing outliers until a viable solution is found or until the outlier limit is reached. Default outlier limit is 15 percent of the dataset. If no viable solution is found after having reached the outlier limit, algorithm will return an empty solution. User can set custom percent of outliers from 0% to 15% when creating Payload object (see examples). Any custom outlier limit above 15% will be reset to 15% by the system.
+A user must ensure that dataset is consistent, i.e. dataset surveys have been acquired by the same BHA and the same MWD tool. Should there be noisy surveys or surveys from different BHAs, algorithm will be removing outliers until a viable solution is found or until the outlier limit is reached. The default outlier limit is 15 percent of the dataset. If no viable solution is found after having reached the outlier limit, algorithm will return an empty solution. User can set custom percent of outliers from 0% to 15% when creating Payload object (see compute example). Any custom outlier limit above 15% will be reset to 15% by the system.
 
 ABOUT AXIAL CORRECTION
 
