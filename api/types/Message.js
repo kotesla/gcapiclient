@@ -70,7 +70,7 @@ function throwWhenPrivateKeyError(err) {
     }
 }
 
-function throwWhenCommError(err) {
+function throwWhenCommsError(err) {
     if (errorIncludesText(err, 'ECONNREFUSED')) {
         throw new Error(
             'Error sending message (server not responding)'
@@ -109,7 +109,7 @@ Message.prototype.sendAsync = async function (privateKey, urlExt) {
             throw new Error(this.log);
         }
     } catch (e) {
-        throwWhenCommError(e);
+        throwWhenCommsError(e);
         throw e;
     }
 };
