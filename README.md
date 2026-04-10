@@ -47,9 +47,15 @@ API supports error models that follow ISCWSA rev. 4 / OWSG Rev.2 protocols and m
 
 Error model names were made intentionally verbose to help inexperienced users navigate the subject. For example, conventional approach is to drop "BGGM" identifier in error model arguments whenever BGGM is used for geomagnetic model, so, keep that in mind when looking for equivalents in your well planning software.
 
+ABOUT DEPTH AND TIME
+
+API does not use Depth Or Time as input parameters. Instead, API ensures the order of input always matches the order of output. It is user's responsibility to assign proper identifiers (depth, time) to the data sequence.    
+
 ABOUT MSA CORRECTION
 
 A user must ensure that dataset is consistent, i.e. dataset surveys have been acquired by the same BHA and the same MWD tool. Should there be noisy surveys or surveys from different BHAs, algorithm will be removing outliers until a viable solution is found or until the outlier limit is reached. The default outlier limit is 15 percent of the dataset. If no viable solution is found after having reached the outlier limit, algorithm will return an empty solution. User can set custom percent of outliers from 0% to 15% when creating Payload object (see compute example). Any custom outlier limit above 15% will be reset to 15% by the system.
+
+For results, API returns magnetometer bias and scale values used to correct the MWD measurements, magnetometer bias and scale uncertainties, outlier indices (zero based), qc flags. Outlier stations, when detected, do not have any contribution in any given MSA solution.  
 
 ABOUT AXIAL CORRECTION
 
