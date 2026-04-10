@@ -9,7 +9,7 @@ Folder structure:
 
 Compute functions:
 1. getErrorModelListAsync - returns the full list of error models supported by the API (specifications)
-2. getErrorModelListShortAsync - returns the short list of error models supported by API, primarily for the purpose of getting error model ids for use in other function calls
+2. getErrorModelListShortAsync - returns the short list of error models supported by the API, primarily for the purpose of getting error model ids for use in other function calls
 3. getComputeAsync - returns interpreted MWD surveys with all corrections applied and qc flags as per error model specifications.
 
 Access management functions:
