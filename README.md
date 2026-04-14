@@ -60,7 +60,15 @@ For results, API returns magnetometer bias and scale values and their uncertaint
 
 ABOUT AXIAL CORRECTION
 
-API returns 2 sequences of results. First sequence is the best solution results, second sequence is the second-best solution results. Each sequence element has relevant qc flags.
+API returns 2 sequences of results [[seq1],[seq2]]. First sequence is the best solution results, second sequence is the second-best solution results. Each sequence element has relevant qc flags.
+Example of return: 
+{
+"emdlid": "af3e300adr7cf6n6a5lbe48r03edfec23109",
+"emdl": "ISCWSA MWD, Rev. 4 (BGGM, Axial)",
+"eval": [[{s1},{s2},{s3}],[{s1},{s2},{s3}]]
+}
+
+
 
 API is likely to yield an unstable solution at sensor attitudes in the no-go zone (sin(Inc)*sin(Az magnetic) >= 0.85). These are natural constraints of the algorithm and have nothing to do with the implementation. Sensor degradation may accelerate the onset of these effects.
 
