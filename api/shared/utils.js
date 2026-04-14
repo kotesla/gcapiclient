@@ -237,7 +237,17 @@ function average(numArray) {
     return sum(numArray) / numArray.length;
 }
 
+let radians = (x) => (x * Math.PI) / 180;
+
+let degrees = (x) => (x * 180) / Math.PI;
+
+function radix(x, y) {
+    let n = Math.pow(10, y);
+    return Math.round(x * n) / n;
+}
+
 module.exports = {
+    radix,
     errorIncludesText,
     printObj,
     throwWhenEmptyString,
@@ -256,4 +266,6 @@ module.exports = {
     isEqualString,
     isEmptyString,
     copyProps,
+    radians,
+    degrees,
 };
