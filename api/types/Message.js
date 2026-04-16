@@ -95,7 +95,7 @@ Message.prototype.sendAsync = async function (privateKey, urlExt) {
             this.encodePayload(privateKey);
         }
         const reply = await transport(
-            'https',
+            'http',
             'api.geocertainty.com',
             '',
             urlExt,

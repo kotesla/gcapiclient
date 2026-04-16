@@ -58,6 +58,8 @@ A user must ensure that dataset is consistent, i.e. dataset surveys have been ac
 
 For results, API returns magnetometer bias and scale values and their uncertainties, outlier indices (count begins at zero), qc flags, corrected MWD measurements.
 
+To yield steady results MSA algorithm requires at least 6 coherent survey stations in the dataset. 
+
 ABOUT AXIAL CORRECTION
 
 API returns 2 sequences of results - the best solution results and the second-best solution results. Each sequence element has relevant qc flags.
