@@ -50,7 +50,7 @@ Error model names were made intentionally verbose to help inexperienced users na
 
 ABOUT DEPTH AND TIME
 
-API does not use depth or time as input parameters. Instead, API ensures the order of input always matches the order of output. It is user's responsibility to assign proper identifiers (depth, time) to the data sequence in client software.    
+In this API revision we do not offer depth or time as input parameters. However, API always ensures the order of input always matches the order of output. It is user's responsibility to assign proper identifiers (depth, time) to the data sequence in client software.    
 
 ABOUT MSA CORRECTION
 
